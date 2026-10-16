@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --color-brand-cream: #FAF7F2;
+  --color-brand-ivory: #F4EFEB;
+  --color-brand-espresso: #2B1E16;
+  --color-brand-coffee: #4A3326;
+  --color-brand-caramel: #C59B6D;
+  --color-brand-caramel-light: #E8D5C4;
+  --color-brand-gold: #D4A373;
+  --color-brand-sage: #6B7A66;
+  --color-brand-sage-light: #EEF2ED;
+  --color-brand-muted: #7A6F68;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #2B1E16;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom subtle scrollbar with smooth caramel thumb */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CCC4;
+  border-radius: 9999px;
+  border: 1px solid #FAF7F2;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B6D;
+}

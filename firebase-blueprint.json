@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "BusinessSettings": {
+      "title": "BusinessSettings",
+      "description": "Public business information, contact details, reviews and configurable platform links",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "category": { "type": "string", "maxLength": 100 },
+        "address": { "type": "string", "maxLength": 200 },
+        "plusCode": { "type": "string", "maxLength": 50 },
+        "telephone": { "type": "string", "maxLength": 50 },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "priceRange": { "type": "string", "maxLength": 50 },
+        "service": { "type": "string", "maxLength": 50 },
+        "closingTime": { "type": "string", "maxLength": 100 },
+        "instagramUrl": { "type": "string", "maxLength": 300 },
+        "glovoUrl": { "type": "string", "maxLength": 300 },
+        "mapsUrl": { "type": "string", "maxLength": 300 },
+        "logoUrl": { "type": "string", "maxLength": 1000 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["name", "telephone", "rating", "reviewCount"]
+    },
+    "WebsiteSettings": {
+      "title": "WebsiteSettings",
+      "description": "Public website editorial settings and announcement banner",
+      "type": "object",
+      "properties": {
+        "heroHeadline": { "type": "string", "maxLength": 150 },
+        "heroSubheadline": { "type": "string", "maxLength": 500 },
+        "isPublished": { "type": "boolean" },
+        "announcement": { "type": "string", "maxLength": 300 },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["heroHeadline", "isPublished"]
+    },
+    "MenuCategory": {
+      "title": "MenuCategory",
+      "description": "Category for organizing menu items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 300 },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "name", "order"]
+    },
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "Dishes, beverages and brunch items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "name": { "type": "string", "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 500 },
+        "priceMAD": { "type": "number" },
+        "category": { "type": "string", "maxLength": 64 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "cloudinaryPublicId": { "type": "string", "maxLength": 200 },
+        "isAvailable": { "type": "boolean" },
+        "isFeatured": { "type": "boolean" },
+        "updatedAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "name", "category", "isAvailable", "isFeatured"]
+    },
+    "GalleryImage": {
+      "title": "GalleryImage",
+      "description": "Curated photographs showcasing café atmosphere, terrace, coffee, and food",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 120 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "cloudinaryPublicId": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 50 },
+        "altText": { "type": "string", "maxLength": 250 },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "title", "imageUrl", "category", "altText"]
+    }
+  },
+  "firestore": {
+    "/settings/{settingId}": {
+      "schema": "BusinessSettings",
+      "description": "Public business and website settings"
+    },
+    "/menuCategories/{categoryId}": {
+      "schema": "MenuCategory",
+      "description": "Menu category collection"
+    },
+    "/menuItems/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Menu items collection"
+    },
+    "/gallery/{imageId}": {
+      "schema": "GalleryImage",
+      "description": "Atmosphere and food gallery collection"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Yours Brunch and Cafe",
+  "description": "Premium coffee shop and brunch restaurant in Salé El Jadida, Morocco. Slow mornings, handcrafted coffee, and sweet moments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Public settings: readable by all, writable only by authenticated admin
+    match /settings/{settingId} {
+      allow read: if isValidId(settingId);
+      allow write: if isSignedIn() && isValidId(settingId);
+    }
+
+    // Menu categories: readable by all, writable only by authenticated admin
+    match /menuCategories/{categoryId} {
+      allow read: if isValidId(categoryId);
+      allow write: if isSignedIn() && isValidId(categoryId);
+    }
+
+    // Menu items: readable by all, writable only by authenticated admin
+    match /menuItems/{itemId} {
+      allow read: if isValidId(itemId);
+      allow write: if isSignedIn() && isValidId(itemId);
+    }
+
+    // Gallery images: readable by all, writable only by authenticated admin
+    match /gallery/{imageId} {
+      allow read: if isValidId(imageId);
+      allow write: if isSignedIn() && isValidId(imageId);
+    }
+  }
+}
